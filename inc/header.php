@@ -21,7 +21,7 @@
 </script>
 </head>
 <body>
-  <div class="wrap">
+  <div class="">
 		<div class="header_top">
 			<div class="logo">
 				<a href="index.php"><img src="images/logo.png" alt="" /></a>

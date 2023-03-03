@@ -1,5 +1,5 @@
 <?php
-	include 'inc/header.php';
+	include 'inc/newheader.php';
 	include 'inc/slider.php';
 ?>
 
