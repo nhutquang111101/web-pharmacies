@@ -1,6 +1,7 @@
 <?php
-	include_once '../lib/database.php';
-	include_once '../helper/format.php';
+	$filepath = realpath(dirname(__FILE__));
+	include_once ($filepath.'/../lib/database.php');
+	include_once ($filepath.'/../helper/format.php');
 ?>
 
 <?php
@@ -94,6 +95,24 @@
 				$alert = "<span class'success'>Xóa không thành công danh mục</span>";
 				return $alert;
 			}
+		}
+		public function show_catgeory_fontend(){
+			// sắp xếp giảm dần
+			$query ="SELECT * FROM tbl_category order by catId desc ";
+				$result = $this->db->select($query);
+			return $result;
+		}
+
+		public function get_product_by_cat($id){
+			$query ="SELECT * FROM tbl_product WHERE catId = '$id' order by catId desc LIMIT 8";
+			$result = $this->db->select($query);
+			return $result;
+		}
+
+		public function get_name_by_cat($id){
+			$query ="SELECT tbl_product.*, tbl_category.catName, tbl_category.catId FROM tbl_product,tbl_category  WHERE tbl_product.catId = tbl_category.catId AND tbl_product.catId = '$id' LIMIT 1";
+			$result = $this->db->select($query);
+			return $result;
 		}
 	}
 ?>

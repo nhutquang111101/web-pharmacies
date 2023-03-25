@@ -3,30 +3,30 @@
 	// include 'inc/slider.php';
 ?>
 <?php
-	if(isset($_GET['cartid'])){
-		$cartid = $_GET['cartid'];
-		$delcart = $ct->delete_product_cart($cartid);
-	}
-	if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])    ){
-        $cartId = $_POST['cartId']; 
-		$quantity = $_POST['quantity'];
-		$update_quantity_Cart = $ct->update_quantity_cart($quantity,$cartId);
-		if($quantity<=0){
-			$delcart = $ct->delete_product_cart($cartId);
+	// if(isset($_GET['cartid'])){
+	// 	$cartid = $_GET['cartid'];
+	// 	$delcart = $ct->delete_product_cart($cartid);
+	// }
+	// if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])    ){
+    //     $cartId = $_POST['cartId']; 
+	// 	$quantity = $_POST['quantity'];
+	// 	$update_quantity_Cart = $ct->update_quantity_cart($quantity,$cartId);
+	// 	if($quantity<=0){
+	// 		$delcart = $ct->delete_product_cart($cartId);
 
-		}
-	}	
+	// 	}
+	// }	
 ?>	
-<?php 
+<!-- <?php 
 	if(!isset($_GET['id'])){
 		echo "<meta http-equiv='refresh' content='0;URL=?id=live'>";
 	}
-?>
+?> -->
  <div class="main">
     <div class="content">
     	<div class="cartoption">		
 			<div class="cartpage">
-			    	<h2>Your Cart</h2>
+			    	<h2>So Sánh Sản Phẩm</h2>
 					<?php 
 						if(isset($update_quantity_Cart)){
 							echo $update_quantity_Cart;

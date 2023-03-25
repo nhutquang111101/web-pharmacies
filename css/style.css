@@ -101,6 +101,7 @@ body{
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	cursor:pointer;
+	margin-right: 5px;
 }
 .cart{
 	height: 38px;
@@ -133,6 +134,10 @@ body{
 	font-size:13px;
 	font-weight:bold;
 	color: #DD0F0E;
+	
+}
+.button-login{
+	margin-left: 5px;
 }
 input[type="number"] {
   border: 1px solid #b8b8b8;
@@ -2475,3 +2480,4 @@ p.terms {
 		padding:4%;
 	}
 }
+

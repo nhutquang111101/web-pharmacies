@@ -6,13 +6,22 @@
 <?php include_once '../helper/format.php';?>
 <?php
 
-$pd = new product();
-$fm = new Format();
+	$pd = new product();
+	$fm = new Format();
+	if(isset($_GET['productid'])){
+		$id = $_GET['productid'];
+		$delproduct = $pd->delete_product($id);
+	}
 ?>
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Post List</h2>
         <div class="block">  
+		<?php
+           if(isset($delproduct)){
+               echo $delproduct;
+           }
+        ?>
             <table class="data display datatable" id="example">
 			<thead>
 				<tr>
@@ -46,7 +55,7 @@ $fm = new Format();
 					<td><?php echo $result['catName']?></td>
 					<td><?php 
 					 
-							if($result['types'] == 0){
+							if($result['types'] == "1"){
 								echo 'Thinh Hanh';
 							}
 							else

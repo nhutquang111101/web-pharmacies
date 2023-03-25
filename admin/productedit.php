@@ -13,7 +13,7 @@
     else {
         echo "<script>window.location ='productlist.php'</script>";
     }
-        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['productid'])    ){
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])    ){
            
 
             $updateProduct = $pd->update_product($_POST, $_FILES,$id);
@@ -134,17 +134,17 @@
                         <select id="select" name="types">
                             <option>Select Type</option>
                             <?php
-                                if($result_product['types'] == 0){
+                                if($result_product['types'] == "0"){
                             ?>
-                            <option selected value="1">Featured</option>
-                            <option value="0">Non-Featured</option>
+                                <option  value="1">Featured</option>
+                                <option selected value="0">Non-Featured</option>
                             <?php
                                 }
                                 else{
                                 
                             ?>
-                            <option  value="1">Featured</option>
-                            <option selected value="0">Non-Featured</option>
+                            <option selected value="1">Featured</option>
+                            <option  value="0">Non-Featured</option>
                             <?php
                                  } 
                             ?>
