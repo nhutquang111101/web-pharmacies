@@ -24,7 +24,7 @@
 					 <a href="details.php"><img src="admin/uploads/<?php echo $result_new['image_product']?>" alt="" /></a>
 					 <h2><?php echo $result_new['productName']?></h2>
 					 <p><?php echo $fm->textShorten($result_new['productName'], 20)?></p>
-					 <p><span class="price"><?php echo $result_new['price']."VND"?></span></p>
+					 <p><span class="price"><?php echo $fm->format_currency($result_new['price'])." VNĐ"?></span></p>
 				     <div class="button"><span><a href="details.php?proid=<?php echo $result_new['productID'] ?>" class="details">Details</a></span></div>
 				</div>
 				<?php

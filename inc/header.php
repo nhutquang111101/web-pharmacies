@@ -58,8 +58,9 @@
 			</div>
 			  <div class="header_top_right">
 			    <div class="search_box">
-				    <form>
-				    	<input type="text" value="Search for Products" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search for Products';}"><input type="submit" value="SEARCH">
+				    <form action="search.php" method="POST">
+				    	<input type="text" placeholder="Tìm Kiếm Sản Phẩm..." name="keyword">
+						<input type="submit" name="search_product" value="Tìm Kiếm">
 				    </form>
 			    </div>
 			    <div class="shopping_cart">
@@ -81,11 +82,13 @@
 			      </div>
 			<?php
 				if(isset($_GET['customer_id'])){
+					$customer_id = $_GET['customer_id'];
 					$delcat = $ct->dele_all_data_cart();
+					$delcompare = $ct->del_compare($customer_id);
 					Session::destroy();
 				}
 			?>	  
-		   <div class="login">
+		   <div >
 			<?php
 				$login_check = Session::get('customer_login');
 				if($login_check == false){
@@ -132,8 +135,19 @@
 		else{
 			echo '<li><a href="profile.php">Profile</a> </li>';
 		}
-			?>
-	  <li><a href="contact.php">So Sánh</a> </li>
+		?>
+		<?php
+		$login_check = Session::get('customer_login');
+		if($login_check){
+			echo '<li><a href="compare.php">So Sánh</a> </li>';
+		}
+		?>
+		<?php
+		$login_check = Session::get('customer_login');
+		if($login_check){
+			echo '<li><a href="wishlist.php">Yêu Thích</a> </li>';
+		}
+		?>
 	  <li><a href="contact.php">Contact</a> </li>
 	  <div class="clear"></div>
 	</ul>

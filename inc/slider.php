@@ -88,10 +88,20 @@
 			<section class="slider">
 				  <div class="flexslider">
 					<ul class="slides">
-						<li><img src="images/1.jpg" alt=""/></li>
-						<li><img src="images/2.jpg" alt=""/></li>
-						<li><img src="images/3.jpg" alt=""/></li>
-						<li><img src="images/4.jpg" alt=""/></li>
+						<?php 
+							// $customer_id = Session::get('customer_id');
+							$get_slider = $product->getSlider();
+							if($get_slider){
+								$i = 0;
+								while($result = $get_slider->fetch_assoc()){
+									$i++;
+							
+						?>
+							<li><img src="admin/uploads/<?php echo $result['slider_image']?>" alt=""/></li>
+						<?php
+								}
+							}
+						?>
 				    </ul>
 				  </div>
 	      </section>

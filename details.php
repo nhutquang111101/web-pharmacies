@@ -9,11 +9,23 @@
     else {
         echo "<script>window.location ='404.php'</script>";
     }
-	if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])    ){
+	$customer_id = Session::get('customer_id');
+	if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['compare'])    ){
+           
+		$productid = $_POST['productid'];
+		$insertCompare = $product->insert_compare($productid,$customer_id);
+	}
+	if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['wishlist'])){
+           
+		$productid = $_POST['productid'];
+		$insertWishList = $product->insert_wishlist($productid,$customer_id);
+	}
+	if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
            
 		$quantity = $_POST['quantity'];
 		$AddtoCart = $ct->add_to_cart($id,$quantity);
 	}
+	
 ?>
  <div class="main">
     <div class="content">
@@ -33,7 +45,7 @@
 					<h2><?php echo $reult_detail['productName']?></h2>
 					<p><?php echo $fm->textShorten($reult_detail['product_desc'], 150)?></p>					
 					<div class="price">
-						<p>Price: <span><?php echo $reult_detail['price']?></span></p>
+						<p>Price: <span><?php echo $fm->format_currency($reult_detail['price']).' VNĐ'?></span></p>
 						<p>Category: <span><?php echo $reult_detail['catName']?></span></p>
 						<p>Brand:<span><?php echo $reult_detail['brandName']?></span></p>
 					</div>
@@ -50,8 +62,54 @@
 						?>			
 				</div>
 				<div class="add-cart">
-					<a href="?wlist=<?php echo $reult_detail['productID']?>">Lưu vào danh sách yêu thích</a>
-					<a href="?compare=<?php echo $reult_detail['productID']?>">So Sánh Sản Phẩm</a>	
+					<!-- <a href="?wlist=<?php echo $reult_detail['productID']?>">Lưu vào danh sách yêu thích</a> -->
+					<form action ="" method="POST">
+						<!-- <a href="?compare=<?php echo $reult_detail['productID']?>">So Sánh Sản Phẩm</a>	 -->
+						<input type="hidden" name="productid" value="<?php echo $reult_detail['productID'] ?>"/>
+						
+						<!-- <input type="submit" class="" name="compare" value="So Sánh Sản Phẩm"/> -->
+						<span>
+							<?php
+								$login_check = Session::get('customer_login');
+								if($login_check){
+									// echo '<input type="submit" class="" name="wishlist" value="Yêu Thích Sản Phẩm Sản Phẩm"/>';
+									echo '<input type="submit" class="" name="compare" value="So Sánh Sản Phẩm"/>';
+								}else
+								{
+									echo '';
+								}
+							?>
+						</span>
+						<?php 
+							if(isset($insertCompare)){
+								echo $insertCompare;
+							}
+						?>
+					</form>
+
+					<form action ="" method="POST">
+						<!-- <a href="?compare=<?php echo $reult_detail['productID']?>">So Sánh Sản Phẩm</a>	 -->
+						<input type="hidden" name="productid" value="<?php echo $reult_detail['productID'] ?>"/>
+						
+						<!-- <input type="submit" class="" name="compare" value="So Sánh Sản Phẩm"/> -->
+						<span>
+							<?php
+								$login_check = Session::get('customer_login');
+								if($login_check){
+									echo '<input type="submit" class="" name="wishlist" value="Yêu Thích Sản Phẩm Sản Phẩm"/>';
+									// echo '<input type="submit" class="" name="compare" value="So Sánh Sản Phẩm"/>';
+								}else
+								{
+									echo '';
+								}
+							?>
+						</span>
+						<?php 
+							if(isset($insertWishList)){
+								echo $insertWishList;
+							}
+						?>
+					</form>
 				</div>
 			</div>
 			<div class="product-desc">

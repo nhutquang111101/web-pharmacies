@@ -58,7 +58,7 @@
 							<tr>
 								<td><?php echo $result['productName']?></td>
 								<td><img src="admin/uploads/<?php echo $result['image']?>" alt=""/></td>
-								<td><?php echo $result['price']?></td>
+								<td><?php echo $fm->format_currency($result['price']).' VNĐ'?></td>
 								<td>
 									<form action="" method="post">
 										<input type="hidden" name="cartId" value="<?php echo $result['cartId']?>"/>
@@ -93,7 +93,7 @@
 								<td>
 								<?php 
 									
-									echo  $subtotal;
+									echo  $fm->format_currency($subtotal).' VNĐ';
 									Session::set('sum', $subtotal);
 									Session::set('Qtity', $quaty);
 								?>
@@ -108,7 +108,7 @@
 								<td><?php
 									$vat = $subtotal * 0.1;
 									$gtotal = $subtotal + $vat;  
-									echo $gtotal;
+									echo $fm->format_currency($gtotal).' VNĐ';
 								?></td>
 							</tr>
 					   </table>

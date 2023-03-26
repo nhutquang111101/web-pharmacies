@@ -92,6 +92,21 @@
 				return $msg;
 			}
 		}
+		 
+		public function del_compare($customer_id){
+			$customer_id = mysqli_real_escape_string($this->db->link, $customer_id);
+			$query = "DELETE FROM tbl_compare WHERE customer_id = '$customer_id'";
+			$result = $this->db->delete($query);
+			return $result;
+			// if($result){
+			// 	header("Location: cart.php");
+			// }
+			// else
+			// {
+			// 	$msg = "<span>Xóa mặt hàng không thành công...!!!!!!</span>";
+			// 	return $msg;
+			// }
+		}
 
 		public function cart_check(){
 			$sId = session_id();

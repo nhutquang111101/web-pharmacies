@@ -17,10 +17,10 @@
                         <li><a>Contact Us</a></li>
                     </ul>
                 </li>
-				<li><a class="menuitem">Slider Option</a>
+				<li><a class="menuitem">Slider</a>
                     <ul class="submenu">
-                        <li><a href="addslider.php">Add Slider</a> </li>
-                        <li><a href="sliderlist.php">Slider List</a> </li>
+                        <li><a href="slideradd.php">Thêm Slider</a> </li>
+                        <li><a href="sliderlist.php">Danh Sách Slider</a> </li>
                     </ul>
                 </li>
                 <li><a class="menuitem">Danh Mục Sản phẩm</a>
