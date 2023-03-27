@@ -70,18 +70,18 @@
 							
 					   
 					</div>
-					<!-- <div class="shopping">
-						<div class="shopleft">
-							<a href="index.html"> <img src="images/shop.png" alt="" /></a>
+						<div class="shopping">
+							<div class="shopleft">
+								<a href="index.html"> <img src="images/shop.png" alt="" /></a>
+							</div>
+							<div class="shopright">
+								<a href="payment.php"> <img src="images/check.png" alt="" /></a>
+							</div>
 						</div>
-						<div class="shopright">
-							<a href="payment.php"> <img src="images/check.png" alt="" /></a>
-						</div>
-					</div> -->
     	</div>  	
        <div class="clear"></div>
     </div>
  </div>
-<!-- <?php
+<?php
 	include 'inc/footer.php';
-?>	 -->
+?>	

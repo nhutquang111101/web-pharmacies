@@ -30,7 +30,7 @@
                 $vat = $amount * 0.1;
                 $total = $vat + $amount;
 
-                echo $total.' VND';
+                echo $total.' VNĐ';
            
            ?></p>   
            <p class="text-dark">Chúng tôi sẽ liên lạc sớm nhất cho bạn!!! Làm ơn hãy xem lại chi tiết đơn hàng <a href="orderdetails.php">Ở đây</a></p> 
