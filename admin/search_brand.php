@@ -6,16 +6,16 @@
     if(isset($_GET['delid'])){
         $id = $_GET['delid'];
         $delBrand = $brand->delete_brand($id);
-    }
+    }if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $keyword = $_POST['keyword'];
+
+        $search_brand = $brand->search_brand($keyword);
+    }   
 
 ?>
         <div class="grid_10">
             <div class="box round first grid">
                 <h2>Brand List</h2>
-				<form style="margin: 5px;" action="search_brand.php" method="POST">
-				    	<input type="text" placeholder="Tìm Kiếm danh mục..." name="keyword">
-						<input type="submit" name="search_product" value="Tìm Kiếm">
-				</form>
                 <div class="block">   
                 <?php
                     if(isset($delBrand)){
@@ -33,10 +33,10 @@
 					<tbody>
 						
 						<?php
-							$show_brand = $brand->show_brand();
-							if($show_brand){
+							// $show_brand = $brand->show_brand();
+							if($search_brand){
 								$i =0;
-								while ($result = $show_brand->fetch_assoc()) {
+								while ($result = $search_brand->fetch_assoc()) {
 								$i++;
 									
 							

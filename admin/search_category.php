@@ -1,25 +1,28 @@
 <?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
-<?php include '../classes/brand.php';?>
+<?php include '../classes/category.php';?>
 <?php
-    $brand = new brand();
+    $cat = new category();
     if(isset($_GET['delid'])){
         $id = $_GET['delid'];
-        $delBrand = $brand->delete_brand($id);
+        $delCat = $cat->delete_category($id);
     }
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $keyword = $_POST['keyword'];
+
+        $search_category = $cat->search_category($keyword);
+    }   
 
 ?>
         <div class="grid_10">
             <div class="box round first grid">
-                <h2>Brand List</h2>
-				<form style="margin: 5px;" action="search_brand.php" method="POST">
-				    	<input type="text" placeholder="Tìm Kiếm danh mục..." name="keyword">
-						<input type="submit" name="search_product" value="Tìm Kiếm">
-				</form>
+                <h2>Category List</h2>
+	
                 <div class="block">   
+				
                 <?php
-                    if(isset($delBrand)){
-                        echo $delBrand;
+                    if(isset($delCat)){
+                        echo $delCat;
                 }
                 ?>     
                     <table class="data display datatable" id="example">
@@ -33,10 +36,10 @@
 					<tbody>
 						
 						<?php
-							$show_brand = $brand->show_brand();
-							if($show_brand){
+							// $show_cat = $cat->show_catgeory();
+							if($search_category){
 								$i =0;
-								while ($result = $show_brand->fetch_assoc()) {
+								while ($result = $search_category->fetch_assoc()) {
 								$i++;
 									
 							
@@ -44,8 +47,8 @@
 
 						<tr class="odd gradeX">
 							<td><?php echo $i?></td>
-							<td><?php echo $result['brandName']?></td>
-							<td><a href="brandedit.php?brandid=<?php echo $result['brandId']?>">Sửa</a> || <a onclick="return confirm('Bạn có muốn xóa không?')" href="?delid=<?php echo $result['brandId']?>">Xóa</a></td>
+							<td><?php echo $result['catName']?></td>
+							<td><a href="catedit.php?catid=<?php echo $result['catId']?>">Sửa</a> || <a onclick="return confirm('Bạn có muốn xóa không?')" href="?delid=<?php echo $result['catId']?>">Xóa</a></td>
 						</tr>
 						<?php
 							}

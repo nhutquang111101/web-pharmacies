@@ -31,6 +31,10 @@
 			$adminUser = mysqli_real_escape_string($this->db->link, $adminUser);
 			$adminPass = mysqli_real_escape_string($this->db->link, $adminPass);
 
+			$date = new DateTime();
+			$date_string = $date->format('d-m-Y H:i:s');
+
+
 			if(empty($adminUser) || empty($adminPass)){
 				$alert = "Không được để Trống Tên Tài khoản và mật khẩu";
 				return $alert;
@@ -41,6 +45,18 @@
 				$result = $this->db->select($query);
 
 				if($result != false){
+					//audit hanh dong
+					$insert_audit = "INSERT INTO audit_action (nameAu, dateAu)VALUES('Đăng Nhập','".$date_string."')";
+					$result_audit = $this->db->insert($insert_audit);    
+					
+					if($result_audit){
+						echo "Lưu Thành công hành động";
+					}
+					
+					else{
+						echo "Không Bắt được hành động";
+					}
+
 					$value = $result->fetch_assoc();
 					Session::set('adminlogin', true);
 					Session::set('adminId', $value['adminId']);
@@ -53,7 +69,17 @@
 				else
 				{
 					$alert = "Tài khoản hoặc mật khẩu không đúng";
-						return $alert;
+					$insert_audit = "INSERT INTO audit_action (nameAu, dateAu)VALUES('Đăng Nhập Thất Bại','".$date_string."')";
+					$result_audit = $this->db->insert($insert_audit);    
+					
+					if($result_audit){
+						echo "Lưu Thành công hành động";
+					}
+					
+					else{
+						echo "Không Bắt được hành động";
+					}
+					return $alert;
 				}
 			}
 		}

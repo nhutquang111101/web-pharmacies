@@ -23,7 +23,11 @@
 
 		public function search_product($keyword){
 			$keyword = $this->fm->validation($keyword);
-			$query = "SELECT * FROM tbl_product WHERE productName LIKE '%$keyword%'";
+			$query = "SELECT tbl_product.*, tbl_category.catName, tbl_brand.brandName
+			
+			FROM tbl_product INNER JOIN tbl_category ON tbl_product.catId = tbl_category.catId
+			INNER JOIN tbl_brand ON tbl_product.brandId = tbl_brand.brandId WHERE productName LIKE '%$keyword%'
+			 order by tbl_product.productId ";
 			$result = $this->db->select($query);
 			return $result;
 		}
@@ -35,7 +39,9 @@
             $product_desc = mysqli_real_escape_string($this->db->link, $data['product_desc']);
             $price = mysqli_real_escape_string($this->db->link, $data['price']);
             $type = mysqli_real_escape_string($this->db->link, $data['types']);
-            
+
+			$date = new DateTime();
+			$date_string = $date->format('d-m-Y H:i:s');
             //kiem tra hinh anh va lay hinh anh tu may cho vao upload
             $permited = array('jpg', 'jpeg', 'png', 'gif');
             $file_name= $_FILES['image_product']['name'];
@@ -61,6 +67,17 @@
 				$result = $this->db->insert($query);
 
 				if($result){
+					//audit hanh dong
+					$insert_audit = "INSERT INTO audit_action (nameAu, dateAu)VALUES('Thêm Sản Phẩm','".$date_string."')";
+					$result_audit = $this->db->insert($insert_audit);    
+					
+					if($result_audit){
+						echo "Lưu Thành công hành động";
+					}
+					
+					else{
+						echo "Không Bắt được hành động";
+					}
 					$alert = "<span class'success'>Thêm Thành công sản phẩm</span>";
 					return $alert;
 				}
@@ -75,7 +92,8 @@
 		public function insert_slider($data, $file){
 			$sliderName = mysqli_real_escape_string($this->db->link, $data['sliderName']);
             $type = mysqli_real_escape_string($this->db->link, $data['type']);
-            
+			$date = new DateTime();
+			$date_string = $date->format('d-m-Y H:i:s');
             //kiem tra hinh anh va lay hinh anh tu may cho vao upload
             $permited = array('jpg', 'jpeg', 'png', 'gif');
             $file_name= $_FILES['slider_image']['name'];
@@ -109,6 +127,17 @@
 					$result = $this->db->insert($query);
 
 					if($result){
+						//audit hanh dong
+					$insert_audit = "INSERT INTO audit_action (nameAu, dateAu)VALUES('Thêm slider','".$date_string."')";
+					$result_audit = $this->db->insert($insert_audit);    
+					
+					if($result_audit){
+						echo "Lưu Thành công hành động";
+					}
+					
+					else{
+						echo "Không Bắt được hành động";
+					}
 						$alert = "<span class'success'>Thêm Thành công Slider</span>";
 						return $alert;
 					}
@@ -167,7 +196,8 @@
             $product_desc = mysqli_real_escape_string($this->db->link, $data['product_desc']);
             $price = mysqli_real_escape_string($this->db->link, $data['price']);
             $type = mysqli_real_escape_string($this->db->link, $data['types']);
-            
+			$date = new DateTime();
+			$date_string = $date->format('d-m-Y H:i:s');
             //kiem tra hinh anh va lay hinh anh tu may cho vao upload
             $permited = array('jpg', 'jpeg', 'png', 'gif');
             $file_name= $_FILES['image_product']['name'];
@@ -220,6 +250,17 @@
 				$result = $this->db->update($query);
 
 				if($result){
+					//audit hanh dong
+					$insert_audit = "INSERT INTO audit_action (nameAu, dateAu)VALUES('Cập Nhật Sản Phẩm','".$date_string."')";
+					$result_audit = $this->db->insert($insert_audit);    
+					
+					if($result_audit){
+						echo "Lưu Thành công hành động";
+					}
+					
+					else{
+						echo "Không Bắt được hành động";
+					}
 					$alert = "<span class'success'>Sửa Thành công San Pham</span>";
 					return $alert;
 				}
@@ -235,7 +276,20 @@
 		public function delete_product($id){
 			$query ="DELETE FROM tbl_product where productID = '$id'";
 			$result = $this->db->delete($query);
+			$date = new DateTime();
+			$date_string = $date->format('d-m-Y H:i:s');
 			if($result){
+				//audit hanh dong
+				$insert_audit = "INSERT INTO audit_action (nameAu, dateAu)VALUES('Xóa Sản Phẩm','".$date_string."')";
+				$result_audit = $this->db->insert($insert_audit);    
+				
+				if($result_audit){
+					echo "Lưu Thành công hành động";
+				}
+				
+				else{
+					echo "Không Bắt được hành động";
+				}
 				$alert = "<span class'success'>Xóa thành công San Pham</span>";
 				return $alert;
 			}

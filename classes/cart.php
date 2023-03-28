@@ -27,6 +27,9 @@
             $id = mysqli_real_escape_string($this->db->link, $id);
 			$sId = session_id();
 
+			$date = new DateTime();
+			$date_string = $date->format('d-m-Y H:i:s');
+
 			$query = "SELECT * FROM tbl_product WHERE productID = '$id'";
 			$result = 	$this->db->select($query)->fetch_assoc();
 			
@@ -47,6 +50,17 @@
 			   $result_cart = $this->db->insert($query_insert);
 	
 			   if($result_cart){
+					//audit hanh dong
+					$insert_audit = "INSERT INTO audit_action (nameAu, dateAu)VALUES('Đăng Nhập','".$date_string."')";
+					$result_audit = $this->db->insert($insert_audit);    
+					
+					if($result_audit){
+						echo "Lưu Thành công hành động";
+					}
+					
+					else{
+						echo "Không Bắt được hành động";
+					}
 					header('Location: cart.php');
 			   }
 			   else

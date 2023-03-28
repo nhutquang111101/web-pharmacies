@@ -1,4 +1,4 @@
-﻿<?php include 'inc/header.php';?>
+<?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
 <?php include_once '../classes/brand.php';?>
 <?php include_once '../classes/category.php';?>
@@ -11,15 +11,15 @@
 	if(isset($_GET['productid'])){
 		$id = $_GET['productid'];
 		$delproduct = $pd->delete_product($id);
-	}
+	}if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $keyword = $_POST['keyword'];
+
+        $search_product = $pd->search_product($keyword);
+    }
 ?>
 <div class="grid_10">
     <div class="box round first grid">
-        <h2>Post List</h2>
-		<form style="margin: 5px;" action="search_product.php" method="POST">
-				    	<input type="text" placeholder="Tìm Kiếm danh mục..." name="keyword">
-						<input type="submit" name="search_product" value="Tìm Kiếm">
-				</form>
+        <h2>Danh Sách Sản Phẩm</h2>
         <div class="block">  
 		<?php
            if(isset($delproduct)){
@@ -42,10 +42,10 @@
 			</thead>
 			<tbody>
 				<?php
-					$pdList = $pd->show_product();
-					if($pdList){
+					// $pdList = $pd->show_product();
+					if($search_product){
 						$i =0;
-						while ($result = $pdList->fetch_assoc()){
+						while ($result = $search_product->fetch_assoc()){
 						$i++;
 				
 				?>

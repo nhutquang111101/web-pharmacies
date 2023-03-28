@@ -12,7 +12,12 @@
         <div class="grid_10">
             <div class="box round first grid">
                 <h2>Category List</h2>
+				<form style="margin: 5px;" action="search_category.php" method="POST">
+				    	<input type="text" placeholder="Tìm Kiếm danh mục..." name="keyword">
+						<input type="submit" name="search_product" value="Tìm Kiếm">
+				</form>
                 <div class="block">   
+				
                 <?php
                     if(isset($delCat)){
                         echo $delCat;

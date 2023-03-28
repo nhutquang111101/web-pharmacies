@@ -19,11 +19,18 @@
 			$this->db = new Database();
 			$this->fm = new Format();
 		}
-
+		public function search_category($keyword){
+			$keyword = $this->fm->validation($keyword);
+			$query = "SELECT * FROM tbl_category WHERE catName LIKE '%$keyword%'";
+			$result = $this->db->select($query);
+			return $result;
+		}
 		public function insert_catgeory($catName){
 			$catName = $this->fm->validation($catName);
 
 			$catName = mysqli_real_escape_string($this->db->link, $catName);
+			$date = new DateTime();
+			$date_string = $date->format('d-m-Y H:i:s');
 
 			if(empty($catName)){
 				$alert = "<span class'error'>Không được để trống tên Danh Mục</span>";
@@ -35,6 +42,17 @@
 				$result = $this->db->insert($query);
 
 				if($result){
+					//audit hanh dong
+					$insert_audit = "INSERT INTO audit_action (nameAu, dateAu)VALUES('Thêm Danh Mục','".$date_string."')";
+					$result_audit = $this->db->insert($insert_audit);    
+					
+					if($result_audit){
+						echo "Lưu Thành công hành động";
+					}
+					
+					else{
+						echo "Không Bắt được hành động";
+					}
 					$alert = "<span class'success'>Thêm Thành công danh mục</span>";
 					return $alert;
 				}
@@ -63,6 +81,8 @@
 			$catName = mysqli_real_escape_string($this->db->link, $catName);
 
 			$id = mysqli_real_escape_string($this->db->link, $id);
+			$date = new DateTime();
+			$date_string = $date->format('d-m-Y H:i:s');
 
 			if(empty($catName)){
 				$alert = "<span class'error'>Không được để trống tên Danh Mục</span>";
@@ -74,6 +94,17 @@
 				$result = $this->db->update($query);
 
 				if($result){
+					//audit hanh dong
+					$insert_audit = "INSERT INTO audit_action (nameAu, dateAu)VALUES('Cập Nhật Danh Mục','".$date_string."')";
+					$result_audit = $this->db->insert($insert_audit);    
+					
+					if($result_audit){
+						echo "Lưu Thành công hành động";
+					}
+					
+					else{
+						echo "Không Bắt được hành động";
+					}
 					$alert = "<span class'success'>Sửa Thành công danh mục</span>";
 					return $alert;
 				}
@@ -87,7 +118,20 @@
 		public function delete_category($id){
 			$query ="DELETE FROM tbl_category where catId = '$id'";
 			$result = $this->db->delete($query);
+			$date = new DateTime();
+			$date_string = $date->format('d-m-Y H:i:s');
 			if($result){
+					//audit hanh dong
+					$insert_audit = "INSERT INTO audit_action (nameAu, dateAu)VALUES('Xóa Danh Mục','".$date_string."')";
+					$result_audit = $this->db->insert($insert_audit);    
+					
+					if($result_audit){
+						echo "Lưu Thành công hành động";
+					}
+					
+					else{
+						echo "Không Bắt được hành động";
+					}
 				$alert = "<span class'success'>Xóa thành công danh mục</span>";
 				return $alert;
 			}
