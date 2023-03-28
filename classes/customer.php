@@ -20,6 +20,31 @@
 			$this->fm = new Format();
 		}
 
+        public function insert_Comment(){
+            $nameCustomer = $_POST['nameComment'];
+            $productId = $_POST['product_id_Comment'];
+            $content = $_POST['comment'];
+            echo $productId;
+            echo $nameCustomer;
+            echo $content;
+            if($nameCustomer == "" || $productId == "" || $content == "" ){
+				$alert = "<span class'error'>Không được để trống các trường</span>";
+				return $alert;
+			}else{
+                    $query = "INSERT INTO tbl_comment(customerName, content, productId)VALUES('$nameCustomer', '$content', '$productId')";
+                    $result = $this->db->insert($query);
+                    if($result){
+                        $alert = "<span class'error'>Bình Luận sẽ được admin kiểm duyệt</span>";
+                        return $alert;
+                    }
+                    else
+                    {
+                        $alert = "<span class'error'>Bình Luận không thành công....!!!</span>";
+                        return $alert;
+                    }
+            }
+        }
+
         public function insert_customer($data){
             $fullname = mysqli_real_escape_string($this->db->link, $data['fullname']);
             $city = mysqli_real_escape_string($this->db->link, $data['city']);

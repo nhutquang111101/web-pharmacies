@@ -92,7 +92,7 @@
 								<td>
 									<?php 
 										$total = $result['price'] * $result['quantity'];
-										echo  $total.' VND';
+										echo  $total.' VNĐ';
 									?>
 								</td>
 								<!-- <td><a href="?cartid=<?php echo $result['cartId']?>">Xóa</a></td> -->

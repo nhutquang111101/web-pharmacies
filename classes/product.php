@@ -274,12 +274,32 @@
 	
 		//end backend
 		public function getproduct_feathered(){
-			$query = "SELECT * FROM tbl_product WHERE types = '1'";
+			$sp_tungtrang = 4;
+			if(!isset($_GET['trang'])){
+				$trang = 1;
+			}else{
+				$trang = $_GET['trang'];
+			}
+			$tung_trang = ($trang - 1)*$sp_tungtrang;
+			$query = "SELECT * FROM tbl_product WHERE types = '1' order by productID desc LIMIT $tung_trang,$sp_tungtrang";
 			$result = $this->db->select($query);
 			return $result;
 		}
 		public function getproduct_new(){
-			$query = "SELECT * FROM tbl_product ORDER BY productID desc Limit 4";
+			$sp_tungtrang = 4;
+			if(!isset($_GET['trang'])){
+				$trang = 1;
+			}else{
+				$trang = $_GET['trang'];
+			}
+			$tung_trang = ($trang - 1)*$sp_tungtrang;
+			$query = "SELECT * FROM tbl_product order by productID desc LIMIT $tung_trang,$sp_tungtrang";
+			$result = $this->db->select($query);
+			return $result;
+		}
+		public function get_all_product(){
+			
+			$query = "SELECT * FROM tbl_product";
 			$result = $this->db->select($query);
 			return $result;
 		}

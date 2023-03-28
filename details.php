@@ -25,6 +25,9 @@
 		$productid = $_POST['productid'];
 		$insertWishList = $product->insert_wishlist($productid,$customer_id);
 	}
+	if(isset($_POST['commentSubmit'])){
+		$comment = $cs->insert_Comment();
+	}
 	
 	
 ?>
@@ -138,6 +141,30 @@
     	
  				</div>
  		</div>
+		<?php 
+			if(isset($comment)){
+				echo $comment;
+			}
+		?>
+		<div>
+			<form action="" method="POST">
+			<?php 
+				$login_check = Session::get('customer_login');
+				if($login_check == false){
+					echo 'Đăng Nhập Để Bình Luận';
+				}
+				else{
+					// echo Session::get('customer_name');
+					// echo Session::get('customer_name');
+					echo '<h2>'.Session::get('customer_name').'</h2>';
+				}
+			?>
+			<input type="hidden" value="<?php echo $id; ?>" name="product_id_Comment"/>
+			<input type="text" value="<?php echo Session::get('customer_name'); ?>" name="nameComment"/>
+			<textarea placeholder="Nhập Bình Luận" rows="5" style="resize: none;" class="form-control" name="comment"></textarea>
+			<input type="submit" name="commentSubmit" class="" value="Bình Luận"/>
+			</form>
+		</div>
  	</div>
 <?php
 	include 'inc/footer.php';

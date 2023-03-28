@@ -32,7 +32,19 @@
 					}
 			?>
 			</div>
+			<?php
+					$product_all = $product->get_all_product();
+					$product_count = mysqli_num_rows($product_all);
+					$product_button = $product_count/4;
+					$i =0;
+					echo '<p> Trang: </p>';
+					for($i = 1; $i<$product_button; $i ++){
+						echo '<a style="margin: 0 5px; text-decoration: none;" href="index.php?trang='.$i.'">'.$i.'</a>';
+
+					}
+				?>
 			<div class="content_bottom">
+			
     		<div class="heading">
     		<h3>New Products</h3>
     		</div>
@@ -56,6 +68,19 @@
 						}
 					}
 			?>
+			</div>
+			<div class="">
+				<?php
+					$product_all = $product->get_all_product();
+					$product_count = mysqli_num_rows($product_all);
+					$product_button = $product_count/4;
+					$i =0;
+					echo '<p> Trang: </p>';
+					for($i = 1; $i<$product_button; $i ++){
+						echo '<a style="margin: 0 5px; text-decoration: none;" href="index.php?trang='.$i.'">'.$i.'</a>';
+
+					}
+				?>
 			</div>
     </div>
  </div>

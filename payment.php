@@ -9,6 +9,7 @@
     }
     
 ?>
+
 <?php
     // if(isset($_GET['proid']) && $_GET['proid']!=NULL){
     //     $id = $_GET['proid'];
@@ -30,7 +31,7 @@
             </div>
             <h3>Phương Thức Thanh Toán</h3>
             <a href="offlinepayment.php">Trả tiền mặt khi nhận hàng</a>
-            <a href="onlinepayment.php">Thanh toán online</a>
+            <a href="onlinepayment.php">Thanh toán Online</a>
             <a href="cart.php"><button type="button" class="btn btn-dark">Trở Lại</button></a>
  		</div>
  	</div>
