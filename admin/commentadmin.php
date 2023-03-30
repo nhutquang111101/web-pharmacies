@@ -70,7 +70,7 @@
 						?>
 					</tbody>
 				</table>
-               </div>
+            </div>
         </div>
     </div>
 <script type="text/javascript">
