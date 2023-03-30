@@ -13,10 +13,9 @@
     }
 
 ?>
-<div class="grid_10">
-    <div class="box round first grid">
+    <div class="grid_10">
+        <div class="box round first grid">
         <h2>Kiểm Soát Bình Luận</h2>
-        <div class="block sloginblock"> 
                 <div class="block">   
                 <?php
                     if(isset($delComment)){
@@ -63,8 +62,6 @@
                                 ?>
                                 <a>Đã Duyệt</a>
                                 <?php } ?>
-                                
-                                
                             </td>
                         </tr>
 						<?php
@@ -76,5 +73,12 @@
                </div>
         </div>
     </div>
-</div>
+<script type="text/javascript">
+	$(document).ready(function () {
+	    setupLeftMenu();
+
+	    $('.datatable').dataTable();
+	    setSidebarHeight();
+	});
+</script>
 <?php include 'inc/footer.php';?>

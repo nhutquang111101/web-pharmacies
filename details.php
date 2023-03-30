@@ -165,6 +165,26 @@
 			<input type="submit" name="commentSubmit" class="" value="Bình Luận"/>
 			</form>
 		</div>
+		<div>
+		<?php
+				// $id = $reult_detail['productId'];
+				// echo $id;
+				$get_comment = $cs->show_comment_status($id);
+					if($get_comment == true){
+						// echo 'lấy được ID'.$id;
+						while($result_comment = $get_comment->fetch_assoc()){
+		?>
+			<table class="data display datatable" id="example">
+					<tbody>
+						<tr class="odd gradeX">
+							<td>Bình Luận về sản phẩm: <?php echo $result_comment['content']?></td>
+					</tbody>
+				</table>
+		<?php
+				}
+			}
+		?>
+		</div>
  	</div>
 <?php
 	include 'inc/footer.php';

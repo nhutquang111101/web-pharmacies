@@ -233,5 +233,12 @@
             }
         }
 
+        public function show_comment_status($id){
+            $id = mysqli_real_escape_string($this->db->link, $id);
+            $check_id = "SELECT * FROM tbl_comment where productId = '$id' and status = 1 limit 4";
+            $result_check = $this->db->select($check_id);
+            return $result_check;
+        }
+
 	}
 ?>

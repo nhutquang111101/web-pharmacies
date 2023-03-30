@@ -109,7 +109,7 @@
 	  <li><a href="topbrands.php">Top Brands</a></li>
 	  <?php
 			$check_cart  = $ct->cart_check();
-			if($check_cart == true){
+			if($check_cart){
 				echo '<li><a href="cart.php">Cart</a></li>';
 			}
 			else{

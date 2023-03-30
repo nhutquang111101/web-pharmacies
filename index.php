@@ -7,6 +7,19 @@
 		// echo session_id();
 	?>
     <div class="content">
+		<h3>Danh Mục</h3>
+		<div>
+			<?php
+						$getall_category = $cat->show_catgeory_fontend();
+							if($getall_category){
+								while($result_allcate = $getall_category->fetch_assoc()){
+					?>
+				      <li><a href="productbycat.php?catid=<?php echo $result_allcate['catId']?>"><?php echo $result_allcate['catName']?></a></li>
+				    <?php
+								}
+						}
+			?>
+		</div>
     	<div class="content_top">
     		<div class="heading">
     		<h3>Feature Products</h3>

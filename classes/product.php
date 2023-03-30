@@ -352,7 +352,6 @@
 			return $result;
 		}
 		public function get_all_product(){
-			
 			$query = "SELECT * FROM tbl_product";
 			$result = $this->db->select($query);
 			return $result;
