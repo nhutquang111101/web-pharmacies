@@ -54,7 +54,7 @@
   <div class="wrap">
 		<div class="header_top">
 			<div class="logo">
-				<a href="index.php"><img src="images/logo.png" alt="" /></a>
+				<a href="index.php"><img src="images/logo-new.png" alt="" /></a>
 			</div>
 			  <div class="header_top_right">
 			    <div class="search_box">
@@ -79,8 +79,9 @@
 								?></span>
 							</a>
 						</div>
-			      </div>
-			<?php
+								</div>
+		   <div >
+		   <?php
 				if(isset($_GET['customer_id'])){
 					$customer_id = $_GET['customer_id'];
 					$delcat = $ct->dele_all_data_cart();
@@ -88,7 +89,6 @@
 					Session::destroy();
 				}
 			?>	  
-		   <div >
 			<?php
 				$login_check = Session::get('customer_login');
 				if($login_check == false){

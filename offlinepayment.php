@@ -1,5 +1,5 @@
 <?php
-	include 'inc/header.php';
+	include 'inc/newheader.php';
 	// include 'inc/slider.php';
 ?>
 <?php
@@ -37,7 +37,7 @@
 </style>
 <form action="" method="POST">
  <div class="main">
-    <div class="content">
+    <div class="content-r">
     	<div class="section group">
         <div class="heading">
             <h2>Thanh Toán</h2>
@@ -202,7 +202,7 @@
            
  		</div>
  	</div>
-     <a href="?orderid=order" class="btn btn-dark btn-order">Đặt hàng</a>
+     <a href="?orderid=order" class="btn btn-dark btn-order" style="padding-left:20px;">Đặt hàng</a>
 </div>
 </form>
 <?php

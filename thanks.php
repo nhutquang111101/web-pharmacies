@@ -8,7 +8,7 @@
 ?>
 
  <div class="main">
-    <div class="content">
+    <div class="content-r">
     	<div class="section group">
            <h2><p class="text-success">Đặt hàng Thành Công</p></h2>
            

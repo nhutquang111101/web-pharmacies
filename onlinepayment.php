@@ -1,5 +1,5 @@
 <?php
-	include 'inc/header.php';
+	include 'inc/newheader.php';
 	// include 'inc/slider.php';
 ?>
 <?php
@@ -43,7 +43,7 @@
 </style>
 <form method="POST" action="process_momo_atm.php" target="_blank" enctype="application/x-www-form-urlencoded">
  <div class="main">
-    <div class="content">
+    <div class="content-r">
     	<div class="section group">
         <div class="heading">
             <h2>Thanh Toán</h2>
@@ -205,7 +205,7 @@
            
  		</div>
  	</div>
-     <a href="?orderid=order">
+     <a href="?orderid=order" style="padding-left:40px">
 		<button class="btn btn-danger" name="submit">MoMo ATM</button>
 	</a>
 	<input type="hidden" name="totalPrice" value="<?php echo $gtotal?>"/>

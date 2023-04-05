@@ -1,5 +1,5 @@
 <?php
-	include 'inc/header.php';
+	include 'inc/newheader.php';
 	// include 'inc/slider.php';
 ?>
 <?php
@@ -24,7 +24,7 @@
 	// }
 ?>
  <div class="main">
-    <div class="content">
+    <div class="content-r">
     	<div class="section group">
             <div class="heading">
             <h2>Thanh Toán</h2>

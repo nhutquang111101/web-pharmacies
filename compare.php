@@ -1,5 +1,5 @@
 <?php
-	include 'inc/header.php';
+	include 'inc/newheader.php';
 	// include 'inc/slider.php';
 ?>
 <?php
@@ -23,7 +23,7 @@
 	}
 ?> -->
  <div class="main">
-    <div class="content">
+    <div class="content-r">
     	<div class="cartoption">		
 			<div class="cartpage">
 			    	<h4>So Sánh Sản Phẩm</h4>

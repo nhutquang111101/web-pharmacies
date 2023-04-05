@@ -180,7 +180,7 @@
                     Session::set('customer_login', true);
                     Session::set('customer_id', $value['id_customer']);
                     Session::set('customer_name',$value['fullname']);
-                    header('Location:order.php');
+                    // header('Location:order.php');
                 }else{
                     $alert = "<span class'error'>Tài khoản và mật khẩu không đúng</span>";
                     return $alert;
