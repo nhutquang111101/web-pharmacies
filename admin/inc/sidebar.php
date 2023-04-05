@@ -4,7 +4,7 @@
             <ul class="section menu">
                <li><a class="menuitem">Chức Năng khác</a>
                     <ul class="submenu">
-                        <li><a href="commentadmin.php">Thống kê</a></li>
+                        <li><a href="social.php">Thống kê</a></li>
                         <li><a href="commentadmin.php">Xử Lý Bình Luận</a></li>
                         
                     </ul>

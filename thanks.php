@@ -3,7 +3,13 @@
 	// include 'inc/slider.php';
 ?>
 <?php
+		// if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
+		$customer_id = Session::get('customer_id');
+        $insertOrder = $ct->insertOrders($customer_id);
         $delcat = $ct->dele_all_data_cart();
+		// header('Location: thanks.php');
+    	// }
+        // $delcat = $ct->dele_all_data_cart();
     
 ?>
 

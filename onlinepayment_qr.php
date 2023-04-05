@@ -3,20 +3,14 @@
 	// include 'inc/slider.php';
 ?>
 <?php
-    if(isset($_GET['orderid']) && $_GET['orderid']== 'order'){
-        $customer_id = Session::get('customer_id');
-        $insertOrder = $ct->insertOrders($customer_id);
-        $delcat = $ct->dele_all_data_cart();
-        header('Location: success.php');
-    }
-    // else {
-    //     echo "<script>window.location ='404.php'</script>";
+    
+	// if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
+	// 	$customer_id = Session::get('customer_id');
+    //     $insertOrder = $ct->insertOrders($customer_id);
+    //     $delcat = $ct->dele_all_data_cart();
+	// 	header('Location: thanks.php');
     // }
-	// if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])    ){
-           
-	// 	$quantity = $_POST['quantity'];
-	// 	$AddtoCart = $ct->add_to_cart($id,$quantity);
-	// }
+	
 ?>
 <style>
     .btn-order{
@@ -35,7 +29,7 @@
 	padding: 10px;
 }
 </style>
-<form action="" method="POST">
+<form  action="process_momo.php" method="POST" enctype="application/x-www-form-urlencoded">
  <div class="main">
     <div class="content">
     	<div class="section group">
@@ -54,13 +48,13 @@
 						}
 					?>
 					<?php 
-						if(isset($delcart)){
-							echo $delcart;
+						if(isset($insertOrder)){
+							echo $insertOrder;
 						}
 					?>
 					<?php 
-						if(isset($insertOrder)){
-							echo $insertOrder;
+						if(isset($delcart)){
+							echo $delcart;
 						}
 					?>
 						<table class="tblone">
@@ -86,11 +80,9 @@
 							<tr>
                                 <td><?php echo  $i; ?></td>
 								<td><?php echo $result['productName']?></td>
-								<!-- <td><img src="admin/uploads/<?php echo $result['image']?>" alt=""/></td> -->
 								<td><?php echo $fm->format_currency($result['price']).' '.'VNĐ'?></td>
 								<td>
 								
-										<!-- <input type="hidden" name="cartId" value="<?php echo $result['cartId']?>"/> -->
 										<?php echo $result['quantity']?>
 						
 								</td>
@@ -100,7 +92,6 @@
 										echo  $total.' VNĐ';
 									?>
 								</td>
-								<!-- <td><a href="?cartid=<?php echo $result['cartId']?>">Xóa</a></td> -->
 							</tr>
 							<?php
 								$subtotal += $total;
@@ -207,7 +198,10 @@
            
  		</div>
  	</div>
-     <a href="?orderid=order" class="btn btn-dark btn-order">Đặt hàng</a>
+     <a href="?orderid=order">
+		<button class="btn btn-danger" name="submit">MoMo ATM</button>
+	</a>
+	<input type="hidden" name="totalPrice" value="<?php echo $gtotal?>"/>
 </div>
 </form>
 <?php

@@ -185,6 +185,12 @@
 			}
 		?>
 		</div>
+		<div>
+		<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v16.0&appId=222619806024545&autoLogAppEvents=1" nonce="iilx9ZGF"></script>
+
+<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="500" data-numposts="5"></div>
+		</div>
  	</div>
 <?php
 	include 'inc/footer.php';

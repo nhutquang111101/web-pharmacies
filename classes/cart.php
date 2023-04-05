@@ -135,7 +135,7 @@
 			$query = "DELETE FROM tbl_cart WHERE sId = '$sId'";
 			$result = $this->db->delete($query);
 			if($result){
-				header("Location: cart.php");
+				header("Location: index.php");
 			}
 			else
 			{
@@ -161,7 +161,9 @@
 					VALUES('$productid', '$productName','$idCustomer','$quantity','$price','$image')";
 				   	$result_order = $this->db->insert($query_order);
 				}
+				echo "Dat Hang Thanh cong";
 			}
+			echo "KO lấy dược Sản Phẩm";
 		}
 
 		public function getAmountPrice($customer_id){
@@ -185,6 +187,12 @@
 
 		public function get_inbox_cart(){
 			$query = "SELECT * FROM tbl_order Order BY date_order";
+			$result = $this->db->select($query);
+			return $result;
+		}
+
+		public function getOrderByDate($date){
+			$query = "SELECT * FROM tbl_order WHERE (DATE)date_order = '$date'";
 			$result = $this->db->select($query);
 			return $result;
 		}

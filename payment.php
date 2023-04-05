@@ -31,7 +31,8 @@
             </div>
             <h3>Phương Thức Thanh Toán</h3>
             <a href="offlinepayment.php">Trả tiền mặt khi nhận hàng</a>
-            <a href="onlinepayment.php">Thanh toán Online</a>
+            <!-- <a href="onlinepayment.php">Thanh toán Online Qua ATM MOMO</a> -->
+            <a href="onlinepayment_qr.php">Thanh toán Online</a>
             <a href="cart.php"><button type="button" class="btn btn-dark">Trở Lại</button></a>
  		</div>
  	</div>

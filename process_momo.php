@@ -3,7 +3,7 @@ header('Content-type: text/html; charset=utf-8');
 
 
 function execPostRequest($url, $data)
-{  
+{
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
@@ -28,15 +28,12 @@ $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
 $partnerCode = 'MOMOBKUN20180529';
 $accessKey = 'klm05TvNBzhg7h7j';
 $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
-$orderInfo = "Thanh toán qua mã QR MoMo";
-$amount = "10000";
+$orderInfo = "Thanh toán qua MoMo";
+$amount = $_POST['totalPrice'];
 $orderId = time() ."";
-$redirectUrl = "http://localhost/website_mvc_new/success.php";
-$ipnUrl = "http://localhost/website_mvc_new/success.php";
+$redirectUrl = "http://localhost/website_mvc_new/thanks.php";
+$ipnUrl = "http://localhost/website_mvc_new/thanks.php";
 $extraData = "";
-
-
-
 
 
     $requestId = time() . "";
@@ -64,5 +61,4 @@ $extraData = "";
     //Just a example, please check more in there
 
     header('Location: ' . $jsonResult['payUrl']);
-
 ?>
